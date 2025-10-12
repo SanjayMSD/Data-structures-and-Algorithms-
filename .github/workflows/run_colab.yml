@@ -5,6 +5,10 @@ on:
     - cron: '* * * * *'   # ⏱️ Runs every minute
   workflow_dispatch:       # Allows manual trigger from GitHub Actions tab
 
+concurrency:
+  group: colab-runner
+  cancel-in-progress: false
+  
 jobs:
   execute-notebook:
     runs-on: ubuntu-latest
