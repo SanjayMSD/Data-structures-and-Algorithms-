@@ -21,6 +21,6 @@ jobs:
 
       - name: Execute notebook
         run: |
-          jupyter nbconvert --to notebook --execute Colab_File_print.ipynb --output result.ipynb
+          jupyter nbconvert --to notebook --execute 1 Get Emails.ipynb --output result.ipynb
           echo "---- Notebook Output ----"
           cat result.ipynb | grep -A3 '"text":' || true
