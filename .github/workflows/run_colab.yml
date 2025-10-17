@@ -1,27 +1,31 @@
-name: Run Jupyter Notebook
+name: Run Jupyter Notebook with Papermill
 
 on:
-  workflow_dispatch:    # allows manual trigger
+  workflow_dispatch:    # Allows manual trigger
   schedule:
-    - cron: "0 * * * *"  # optional: runs every hour
+    - cron: "0 * * * *"  # Optional: runs every hour
 
 jobs:
   run-notebook:
     runs-on: ubuntu-latest
 
     steps:
+      # Step 1: Checkout the repository
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      # Step 2: Set up Python
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.10"
 
+      # Step 3: Install dependencies
       - name: Install dependencies
         run: |
-          pip install pandas jupyter nbconvert
+          pip install pandas papermill openpyxl
 
-      - name: Run Jupyter notebook
+      # Step 4: Run notebook using Papermill
+      - name: Run notebook and see print output
         run: |
-          python 1_Get_Emails.py
+          papermill 1_Get_Emails.ipynb output.ipynb
