@@ -24,5 +24,4 @@ jobs:
 
       - name: Run Jupyter notebook
         run: |
-          jupyter nbconvert --execute 1_Get_Emails.ipynb \
-            --to notebook --output output.ipynb
+          python 1_Get_Emails.py
