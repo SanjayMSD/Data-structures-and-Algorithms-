@@ -23,7 +23,7 @@ jobs:
       # Step 3: Install dependencies and register kernel
       - name: Install dependencies
         run: |
-          pip install pandas papermill jupyter ipykernel openpyxl
+          pip install -q pandas papermill jupyter ipykernel openpyxl
           python -m ipykernel install --user --name=python3
 
       # Step 4: Run notebook
