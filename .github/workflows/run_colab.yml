@@ -27,8 +27,9 @@ jobs:
           python -m ipykernel install --user --name=python3
 
       # Step 4: Run notebook
-      - name: Run notebook and see print output
+      - name: Run notebook and see outputs
         run: |
-          pip install --upgrade papermill pandas jupyter ipykernel openpyxl
-          papermill 1_Get_Emails.ipynb output.ipynb --log-output
+          pip install pandas jupyter nbconvert ipykernel
+          jupyter nbconvert --to notebook --execute 1_Get_Emails.ipynb --stdout
+
 
