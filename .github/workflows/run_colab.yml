@@ -1,26 +1,27 @@
-name: Run Colab Notebook
+name: Run CSV Reader Script
 
 on:
+  workflow_dispatch:    # Allows manual trigger from GitHub UI
   schedule:
-    - cron: '* * * * *'   # ⏱️ Runs every minute
-  workflow_dispatch:       # Allows manual trigger from GitHub Actions tab
+    - cron: "0 * * * *"  # Optional: runs every hour
 
-concurrency:
-  group: colab-runner
-  cancel-in-progress: false
-  
 jobs:
-  execute-notebook:
+  run-csv-reader:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout repository
+      - name: 🧾 Checkout repository
         uses: actions/checkout@v4
 
-      - name: Install Jupyter
-        run: pip install jupyter nbconvert nbformat
+      - name: 🐍 Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
 
-      - name: Execute notebook
+      - name: 📦 Install dependencies
         run: |
-          jupyter nbconvert --to notebook --execute 1_Get_Emails.ipynb --output result.ipynb
-          echo "---- Notebook Output ----"
-          cat result.ipynb | grep -A3 '"text":' || true
+          pip install pandas
+
+      - name: ▶️ Run Python script
+        run: |
+          python read_csv_script.py
