@@ -29,4 +29,6 @@ jobs:
       # Step 4: Run notebook
       - name: Run notebook and see print output
         run: |
-          papermill 1_Get_Emails.ipynb output.ipynb --log-output --progress-bar off
+          pip install --upgrade papermill pandas jupyter ipykernel openpyxl
+          papermill 1_Get_Emails.ipynb output.ipynb --log-output
+
