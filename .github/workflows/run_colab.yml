@@ -24,4 +24,4 @@ jobs:
 
       - name: ▶️ Run Python script
         run: |
-          python read_csv_script.py
+          python 1_Get_Emails.ipynb
