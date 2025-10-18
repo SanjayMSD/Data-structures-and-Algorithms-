@@ -30,6 +30,6 @@ jobs:
       - name: Run notebook and see outputs
         run: |
           pip install -q pandas 
-          python 1_Get_Emails.py
+          python 1_Access_Websites.py
 
 
