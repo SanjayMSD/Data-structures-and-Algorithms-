@@ -16,7 +16,7 @@ INPUT_FILE = "filtered_companies.xlsx"   # Excel file name
 COLUMN_NAME = "Website"                  # Column containing website URLs
 TIMEOUT = 10                             # seconds
 PRINT_EVERY = 10                         # progress update after N checks
-SCAN_LIMIT = 200                         # number of websites to check (None = all)
+SCAN_LIMIT = None                         # number of websites to check (None = all)
 
 # --- FUNCTION TO CHECK ACCESSIBILITY ---
 def is_accessible(url):
@@ -75,3 +75,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
